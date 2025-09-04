@@ -1,49 +1,201 @@
-/* Jグランツ Enhanced Pro Admin Styles */
-.jgrants-admin-wrap {
-    margin: 20px 0;
+/**
+ * Jグランツ Enhanced Pro - 管理画面スタイル
+ */
+
+.jgrants-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
 }
 
 .jgrants-card {
     background: #fff;
     border: 1px solid #ccd0d4;
-    border-radius: 4px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0,0,0,.04);
 }
 
 .jgrants-card h2 {
     margin-top: 0;
     color: #23282d;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.jgrants-status {
+    line-height: 1.6;
+}
+
+.jgrants-status p {
+    margin: 10px 0;
 }
 
 .jgrants-status-good {
-    color: #46b450;
-    font-weight: bold;
-}
-
-.jgrants-status-warning {
-    color: #ffb900;
+    color: #00a32a;
     font-weight: bold;
 }
 
 .jgrants-status-error {
-    color: #dc3232;
+    color: #d63638;
     font-weight: bold;
 }
 
-.jgrants-button-primary {
+.jgrants-status-disabled {
+    color: #646970;
+    font-style: italic;
+}
+
+.jgrants-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.jgrants-actions .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* テーブルスタイル */
+.jgrants-card table.widefat {
+    margin: 0;
+    border: none;
+}
+
+.jgrants-card table.widefat th {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #c3c4c7;
+    font-weight: 600;
+}
+
+.jgrants-card table.widefat td {
+    border-bottom: 1px solid #c3c4c7;
+    vertical-align: middle;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 782px) {
+    .jgrants-dashboard {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .jgrants-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .jgrants-actions .button {
+        justify-content: center;
+    }
+}
+
+/* アニメーション */
+.jgrants-card {
+    transition: box-shadow 0.2s ease;
+}
+
+.jgrants-card:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+}
+
+/* ローディング状態 */
+.jgrants-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.jgrants-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #ddd;
+    border-top-color: #0073aa;
+    border-radius: 50%;
+    animation: jgrants-spin 1s infinite linear;
+}
+
+@keyframes jgrants-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 通知スタイル */
+.jgrants-notice {
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-left: 4px solid;
+    border-radius: 0 4px 4px 0;
+}
+
+.jgrants-notice.notice-success {
+    border-left-color: #00a32a;
+    background-color: #f0f8f0;
+}
+
+.jgrants-notice.notice-error {
+    border-left-color: #d63638;
+    background-color: #fef7f7;
+}
+
+.jgrants-notice.notice-warning {
+    border-left-color: #dba617;
+    background-color: #fcf9e8;
+}
+
+/* フォームスタイル */
+.jgrants-form-group {
+    margin-bottom: 20px;
+}
+
+.jgrants-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.jgrants-form-group input[type="text"],
+.jgrants-form-group input[type="password"],
+.jgrants-form-group input[type="number"],
+.jgrants-form-group select,
+.jgrants-form-group textarea {
+    width: 100%;
+    max-width: 400px;
+}
+
+.jgrants-form-group .description {
+    margin-top: 5px;
+    color: #646970;
+    font-size: 13px;
+}
+
+/* ボタンスタイル */
+.button.jgrants-button-primary {
     background: #0073aa;
     border-color: #0073aa;
     color: #fff;
 }
 
-.jgrants-form-table th {
-    width: 200px;
-    padding: 20px 10px 20px 0;
-    vertical-align: top;
+.button.jgrants-button-primary:hover {
+    background: #005a87;
+    border-color: #005a87;
 }
 
-.jgrants-form-table td {
-    padding: 20px 0;
+.button.jgrants-button-secondary {
+    background: #f6f7f7;
+    border-color: #c3c4c7;
+    color: #2c3338;
+}
+
+.button.jgrants-button-secondary:hover {
+    background: #f0f0f1;
+    border-color: #8c8f94;
 }
